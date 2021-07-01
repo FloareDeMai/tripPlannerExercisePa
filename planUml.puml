@@ -1,0 +1,54 @@
+@startuml
+class TripPlanner {
+-listOfLocations : List<Location>
++addLocation (Location) : void
++getListOfCities(): List<City>
+
+
+}
+
+class Coordinate {
+-xPos: int
+-yPos : int
+}
+
+abstract class Location {
+-coordinates : Coordinate
+-locationType: LocationType
+
++returnClosestCity(List<City>) : City
+}
+
+class Landmark {
+-name: String
+-entranceFee : int
+
++setEntranceFee(int) : void
+}
+
+class City {
+-name : String
+-listOfLandmarks : List<Landmark>
+
+
++addLandmark(Landmark): void
++getAllLandmarksInA50KmArea () : List<Landmark>
+}
+
+class UserLocation {
+-currentLocation : Coordinate
+-listOfCoordinates : List<Coordinate>
+
++showLocationHistory(): List<Coordinate>
+}
+
+enum LocationType {
+LANDMARK,
+CITY,
+USER_LOCATION
+}
+
+
+TripPlanner o-- Location
+Location o-- Coordinate
+@enduml
